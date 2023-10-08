@@ -35,20 +35,22 @@ export const Login = () => {
     }
     return (
         <div className="flex flex-col gap-5 h-screen items-center justify-center">
-            <div className="topSection">
-                <p>Chose a way u like to Login</p>
-                <div className="flex flex-row gap-1">
-                    <button onClick={() => setUserLogin(true)}>Login as a User</button>
-                    <button onClick={() => setUserLogin(false)}>Login as a Station</button>
+            <div className="">
+                <div className="flex flex-col gap-3 text-center my-2">
+                    <p>Choose a way u like to Login</p>
+                    <div className="flex flex-row justify-around w-full">
+                        <button onClick={() => setUserLogin(true)} className={`text-${userLogin ? 'primary' : 'new-gray'}`}>Login as a User</button>
+                        <button onClick={() => setUserLogin(false)} className={`text-${userLogin ? 'new-gray' : 'primary'}`}>Login as a Station</button>
+                    </div>
                 </div>
-            </div>
                 {userLogin ? (
                     <div className="flex flex-col gap-3 items-center py-5 px-7 border border-gray-300 rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
                         <h1>Login as a User</h1>
                         <input 
-                            type="text"
+                            type="email"
                             placeholder="Email"
                             value={userEmail}
+                            className="inputs"
                             onChange={e=> {
                                 setUserEmail(e.target.value)
                             }}
@@ -57,22 +59,24 @@ export const Login = () => {
                             type="password"
                             placeholder="password"
                             value={userPassword}
+                            className="inputs"
                             onChange={e=> {
                                 setUserPassword(e.target.value)
                             }}
                         />
-                        <button onClick={handleUserLogin}>Login</button>
+                        <button onClick={handleUserLogin} className="sub-button">Login</button>
                         <div className="reg">
-                            <Link className="link" to="/register">Register</Link> 
+                            <Link className="text-blue-500 font-bold no-underline hover:underline" to="/register">Register</Link> 
                         </div>
                     </div>
                 ) : (
                     <div className="flex flex-col gap-3 items-center py-5 px-7 border border-gray-300 rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
-                        <h1>Login as a Station</h1>
+                        <h1 className="text-primary">Login as a Station</h1>
                         <input 
                             type="text"
                             placeholder="Email"
                             value={stationEmail}
+                            className="inputs"
                             onChange={e=> {
                                 setStationEmail(e.target.value)
                             }}
@@ -81,16 +85,18 @@ export const Login = () => {
                             type="password"
                             placeholder="password"
                             value={statioinPassword}
+                            className="inputs"
                             onChange={e=> {
                                 setStationPassword(e.target.value)
                             }}
                         />
-                        <button onClick={handleStationLogin}>Login</button>
+                        <button onClick={handleStationLogin} className="sub-button">Login</button>
                         <div className="reg">
                             <Link className="text-blue-500 font-bold no-underline hover:underline" to="/register">Register</Link> 
                         </div>
                     </div>
                 )}
+            </div>
         </div>
     )
 }
